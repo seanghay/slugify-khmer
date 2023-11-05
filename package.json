@@ -1,0 +1,17 @@
+{
+  "name": "slugify-khmer",
+  "license": "MIT",
+  "version": "0.1.0",
+  "repository": "seanghay/slugify-khmer",
+  "description": "Slugify Khmer text into a latin form.",
+  "main": "./slugify.js",
+  "author": {
+    "name": "Seanghay Yath",
+    "email": "seanghay.dev@gmail.com",
+    "url": "https://github.com/seanghay"
+  },
+  "files": ["slugify.js", "slugify.d.ts"],
+  "dependencies": {
+    "split-khmer": "^1.0.1"
+  }
+}
