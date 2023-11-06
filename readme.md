@@ -19,6 +19,16 @@ slugify('មិនដឹងទេ that\'s nice', "_")
 // => mindoeng_te that's nice
 ```
 
+### `transform(text: string): Generator<string>`
+
+```javascript
+import { transform } from 'slugify-khmer';
+
+for (const s of transform('មិនដឹងទេ')) {
+	console.log(s);
+}
+```
+
 ### License 
 
 MIT
