@@ -88,7 +88,8 @@ const vowelEntries = [
 	['ើះ', ['aeuh', 'euh']],
 	['ែះ', ['aeh', 'eaeh']],
 	['ោះ', ['aoh', 'uoh']],
-	['ាត់', ['aat', 'oat']]
+	['ាត់', ['aat', 'oat']],
+	['្រ', ['ra', 'rea']]
 ].sort((a, b) => b[0].length - a[0].length).map(([k, v]) => [new RegExp(`^${k}`), v])
 
 /**
@@ -118,7 +119,6 @@ function* transform(input) {
 		let c = input[i];
 
 		if (/[\s\u200b\u200a]|[^\u1780-\u17dd]/.test(c)) {
-			vowelsMatch = null;
 			pc = null;
 			yield c;
 			continue;
