@@ -1,7 +1,7 @@
 {
   "name": "slugify-khmer",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": "seanghay/slugify-khmer",
   "description": "Slugify Khmer text into a latin form.",
   "main": "./slugify.js",
@@ -13,5 +13,9 @@
   "files": ["slugify.js", "slugify.d.ts"],
   "dependencies": {
     "split-khmer": "^1.0.1"
+  },
+  "keywords": ["khmer", "cambodia", "khmer-language", "slugify"],
+  "scripts": {
+    "test": "node slugify.test.js && node slugify.test.mjs"
   }
 }
