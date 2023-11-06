@@ -45,7 +45,7 @@ const consonants = new Map([
 	['ឩ', 'u'],
 	['ឩ', 'au'],
 	['ឫ', 'rue'],
-	['ឭ', 'lue'],
+	['ឬ', 'rueu'],
 	['ឭ', 'lue'],
 	['ឮ', 'lueu'],
 	['ឯ', 'ae'],
@@ -89,9 +89,8 @@ const vowelEntries = [
 	['ើះ', ['aeuh', 'euh']],
 	['ែះ', ['aeh', 'eaeh']],
 	['ោះ', ['aoh', 'uoh']],
-].sort((a, b) => {
-	return b[0].length - a[0].length
-}).map(([k, v]) => [new RegExp(`^${k}`), v])
+	['ាត់', ['aat', 'oat']]
+].sort((a, b) => b[0].length - a[0].length).map(([k, v]) => [new RegExp(`^${k}`), v])
 
 /**
  * Convert Khmer word into a romanization form
@@ -99,6 +98,19 @@ const vowelEntries = [
  * @returns {Generator<string>}
  */
 function* transform(input) {
+
+	if (typeof input !== 'string') {
+		return null;
+	}
+
+	if (input.length == 1) {
+		if (consonants.has(input)) {
+			yield consonants.get(input);
+			yield vowelsDefault[+!firstSeries.has(input)];
+			return;
+		}
+	}
+
 	let pc = null;
 
 	const sindex = () => +!(pc != null && firstSeries.has(pc));
@@ -113,8 +125,6 @@ function* transform(input) {
 			continue;
 		}
 
-
-
 		if (consonants.has(c)) {
 
 			if (pc != null) {
@@ -122,6 +132,8 @@ function* transform(input) {
 					if (consonants.has(input[i - 2])) {
 						yield vowelsDefault[sindex()];
 					}
+				} else {
+					yield vowelsDefault[sindex()];
 				}
 			}
 
@@ -140,8 +152,6 @@ function* transform(input) {
 		}
 
 		pc = null;
-		// yield c;
-
 	}
 }
 
